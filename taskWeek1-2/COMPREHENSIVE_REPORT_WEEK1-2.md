@@ -267,7 +267,7 @@ Dưới đây là các tài liệu và nguồn tham khảo chính được đề
 
 Toàn bộ mã nguồn, cấu hình hạ tầng và nhật ký phát triển được lưu trữ và cập nhật tại:
 
-*   **Repository URL**: [Dán link GitHub/Lab của Tài tại đây]
+*   **Repository URL**: [https://github.com/ntai0404/DATN_2251162143_ProgressNote](https://github.com/ntai0404/DATN_2251162143_ProgressNote)
 *   **Chi tiết**: Bao gồm Dockerfiles, K8s manifests và mã nguồn các Agents.
 
 
