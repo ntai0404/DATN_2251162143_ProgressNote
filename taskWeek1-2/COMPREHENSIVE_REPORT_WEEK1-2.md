@@ -116,24 +116,26 @@ graph LR
     Admin((Quản trị viên))
     MAS((Hệ thống MAS))
     
-    subgraph "Nhóm Tra cứu & Tư vấn (User)"
-        UC1([Tư vấn quy chế thông minh RAG])
-        UC2([Tra cứu văn bản số hiệu/từ khóa])
-        UC3([Xem trích dẫn & văn bản gốc])
-        UC4([Đăng ký / Đăng nhập])
-        UC5([Phản hồi / Đánh giá AI])
-    end
-    
-    subgraph "Nhóm Quản trị Tri thức (Admin)"
-        UC6([Quản lý nguồn tin])
-        UC7([Phê duyệt dữ liệu bóc tách PDF])
-        UC8([Quản lý kho thư viện văn bản])
-    end
-    
-    subgraph "Nhóm Giám sát & Vận hành (System)"
-        UC9([Theo dõi hiệu năng các Agent])
-        UC10([Giám sát lịch sử câu hỏi])
-        UC11([Đánh giá độ chính xác RAG])
+    subgraph "Hệ thống Tư vấn Quy chế TLU" 
+        subgraph "Nhóm Tra cứu & Tư vấn (User)"
+            UC1([Tư vấn quy chế thông minh RAG])
+            UC2([Tra cứu văn bản số hiệu/từ khóa])
+            UC3([Xem trích dẫn & văn bản gốc])
+            UC4([Đăng ký / Đăng nhập])
+            UC5([Phản hồi / Đánh giá AI])
+        end
+        
+        subgraph "Nhóm Quản trị Tri thức (Admin)"
+            UC6([Quản lý nguồn tin])
+            UC7([Phê duyệt dữ liệu bóc tách PDF])
+            UC8([Quản lý kho thư viện văn bản])
+        end
+        
+        subgraph "Nhóm Giám sát & Vận hành (System)"
+            UC9([Theo dõi hiệu năng các Agent])
+            UC10([Giám sát lịch sử câu hỏi])
+            UC11([Đánh giá độ chính xác RAG])
+        end
     end
     
     User --- UC1
