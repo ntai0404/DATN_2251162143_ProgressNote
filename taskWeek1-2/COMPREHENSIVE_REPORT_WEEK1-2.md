@@ -117,11 +117,12 @@ graph LR
     MAS((Hệ thống MAS))
     
     subgraph "Hệ thống Tư vấn Quy chế TLU" 
+        UC4([Đăng ký / Đăng nhập])
+        
         subgraph "Nhóm Tra cứu & Tư vấn (User)"
             UC1([Tư vấn quy chế thông minh RAG])
             UC2([Tra cứu văn bản số hiệu/từ khóa])
             UC3([Xem trích dẫn & văn bản gốc])
-            UC4([Đăng ký / Đăng nhập])
             UC5([Phản hồi / Đánh giá AI])
         end
         
