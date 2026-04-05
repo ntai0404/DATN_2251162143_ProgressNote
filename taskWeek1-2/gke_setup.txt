@@ -1,0 +1,60 @@
+# GKE Cloud-Native Infrastructure (Advanced Setup)
+
+Optimized deployment for Multi-Agent RAG with GPU inference support.
+
+## 1. GKE Cluster Creation (GPU Enabled)
+Create a cluster with a dedicated node pool for the Analyst Agent (LLM).
+
+```bash
+gcloud container clusters create tlu-mas-cluster \
+    --region asia-southeast1 \
+    --num-nodes 1 \
+    --machine-type e2-standard-4 \
+    --accelerator type=nvidia-tesla-t4,count=1 # For vLLM inference
+```
+
+## 2. Qdrant Hybrid Deployment
+Deploy Qdrant with persistent storage and full-text index enabled.
+
+```bash
+helm install qdrant-db qdrant/qdrant \
+    --set storage.capacity=20Gi \
+    --set config.full_text_search.enabled=true
+```
+
+## 3. RabbitMQ Agent Orchestration
+Deploy RabbitMQ with management plugin for MAS monitoring.
+
+```bash
+helm install rabbitmq-mas bitnami/rabbitmq \
+    --set management.enabled=true \
+    --set replicaCount=2
+```
+
+## 4. Monitoring (Prometheus/Grafana)
+Critical for tracking "Agent reasoning time" and "Faithfulness metrics".
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/kube-prometheus-stack
+```
+
+## 5. Deployment Specs for Analyst Agent (Example)
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyst-agent
+spec:
+  template:
+    spec:
+      containers:
+      - name: vllm-llama
+        image: vllm/vllm-openai
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        env:
+        - name: MODEL_ID
+          value: "llama-3-8b-instruct"
+```
