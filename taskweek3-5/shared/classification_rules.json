@@ -1,0 +1,48 @@
+{
+    "hierarchy": [
+        {
+            "level": 1,
+            "name": "Pháp luật Việt Nam (Chung)",
+            "keywords": [
+                "Luật",
+                "Nghị định",
+                "Thông tư"
+            ]
+        },
+        {
+            "level": 2,
+            "name": "Pháp luật Đơn vị sự nghiệp",
+            "keywords": [
+                "Sự nghiệp công lập",
+                "Viên chức"
+            ]
+        },
+        {
+            "level": 3,
+            "name": "Pháp luật Cơ sở Giáo dục",
+            "keywords": [
+                "Luật Giáo dục",
+                "Quy định dạy và học"
+            ]
+        },
+        {
+            "level": 4,
+            "name": "Pháp luật Cơ sở Giáo dục đại học",
+            "keywords": [
+                "Luật Giáo dục đại học",
+                "Văn bằng",
+                "Chứng chỉ"
+            ]
+        },
+        {
+            "level": 5,
+            "name": "Quy chế nội bộ Đại học Thủy Lợi",
+            "keywords": [
+                "TLU",
+                "Thủy Lợi",
+                "Quy chế",
+                "Nội bộ"
+            ]
+        }
+    ]
+}

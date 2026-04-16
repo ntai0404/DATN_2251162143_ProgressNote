@@ -1,0 +1,9 @@
+pymupdf
+qdrant-client
+fastapi
+uvicorn
+pika
+psycopg2-binary
+sentence-transformers
+python-multipart
+python-dotenv
