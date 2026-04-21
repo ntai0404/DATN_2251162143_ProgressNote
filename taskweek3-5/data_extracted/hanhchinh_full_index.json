@@ -1,0 +1,832 @@
+{
+  "scraped_at": "2026-04-17T12:55:17.166911",
+  "total": 118,
+  "documents": [
+    {
+      "title": "(2021) Quy định về xét, cấp Học bổng khuyến khích học tập và Học bổng chính sách trường ĐHTL",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=e4KXi0O5Q5U%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy trình hoạt động hợp tác quốc tế của Trường Đại học Thủy lợi",
+      "date": "HTQT - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=qeHjNir6b1k%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Ban hành quy định về công tác quản lý hoạt động sinh hoạt học thuật của giảng viên trong trường ĐHTL",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=IP_DZKbMJt4%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về học phí, miễn giảm học phí, hỗ trợ chi phí học tập, hỗ trợ học tập và trợ cấp xã hội đối với sinh viên Trường ĐHTL",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=hakT2y_B4h0%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về tổ chức bảo vệ tốt nghiệp theo hình thức trực tuyến tại Trường ĐHTL",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=BBwKP2iVBao%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về việc tổ chức thực hiện đề tài NCKH trọng điểm Trường ĐHTL",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=N5O2svhGc6g%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Hướng dẫn Lập hồ sơ và nộp lưu hồ sơ, tài liệu vào Lưu trữ trường",
+      "date": "HCTH - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=HIac5-00xEg%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy chế tổ chức và hoạt động của Trường Đại học Thủy lợi 2022",
+      "date": "TCCB - Quy chế",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=dcsSwWXaX_0%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy định về công tác khảo sát ý kiến các bên liên quan tại Trường ĐHTL",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=JVs2AnDvMUA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy định về tổ chức và hoạt động thanh tra, kiểm tra nội bộ của Trường Đại học Thủy lợi",
+      "date": "Thanh tra - Quy định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=sTUKYMq3Hgc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Kế hoạch công tác năm 2022",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=hSHamf2lhuk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy chế công tác lưu trữ của Trường Đại học Thủy lợi",
+      "date": "HCTH - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=5XYvL8PlKJg%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy chế quản lý, sử dụng tài sản công Trường Đại học Thủy lợi",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=RGRIqGEtp3o%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về đào tạo môn học Giáo dục thể chất",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=AnI_Xtb3Xxo%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Quy chế tổ chức và hoạt động của Phân hiệu Trường Đại học Thủy lợi tại Bình Dương",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=2QVRC1AggSM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Quy định về việc công tác tổ chức thi trắc nghiệm trên máy tính",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=NVcRqZOE7-k%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Quy định về xây dựng, sử dụng và quản lý ngân hàng câu hỏi thi của Trường Đại học Thủy lợi",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=7mse-iDHf98%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Điều chỉnh điều kiện được làm đồ án, khóa luận tốt nghiệp áp dụng cho sinh viên khoa Kinh tế và quản lý, khoa Công nghệ thông tin",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=L4A9v8T3-3o%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Hướng dẫn về thức và kỹ thuật trình bày văn bản hành chính",
+      "date": "HCTH - HD",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=0uTyGt1m6ko%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "Quy định QL giảng dạy",
+      "date": "P3-QĐ quản lý GD",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=1xDUvT8DqwE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020)Quy định về cấu trúc chương trình đào tạo trình độ đại học",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=dTRqBHs1l7o%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy chế đào tạo trình độ đại học của Trường ĐHTL",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=fVkv74KXhkk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy chế thành lập và tổ chức hoạt động của nhóm nghiên cứu mạnh",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Y8-GbKjpWtw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về công tác thi trực tuyến tại Trường ĐHTL",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=DVM5IU6-LVQ%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Điều chinh quy định về công tác khảo thí áp dụng cho chương trình tiên tiến tại Trường ĐHTL",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=yD8ryj-qRto%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Kế hoạch công tác năm 2021",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=yPXRQZjqJ88%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy chế chi tiêu nội bộ Trường ĐH Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=D3KIaD6-dMg%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy định về tuyển sinh và đào tạo trình độ Thạc sĩ",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=oj76zt2Ic60%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quyết định ban hành Quy chế tạm thời quản lý và sử dụng hệ thống thư điện tử Trường Đại học Thủy lợi",
+      "date": "HCTH - Quy chế",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=5bW7yXrDkH4%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quyết định ban hành Quy tắc ứng xử của cán bộ, viên chức, người lao động Trường Đại học Thủy lợi",
+      "date": "HCTH - Quy chế",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=8bhbfhl2xNw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024)Nội quy học tập trên giảng đường đối với sinh viên của Trường Đại học Thuỷ lợi",
+      "date": "CTCTSV-QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=R7IQUiVKP50%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quy chế tạm thời quản lý và sử dụng hệ thống thư điện tử Trường Đại học Thủy lợi.",
+      "date": "QĐ-HCTH",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=5bW7yXrDkH4%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quy chế tổ chức và hoạt động của Viện nghiên cứu ứng dụng công nghệ và hợp tác doanh nghiệp",
+      "date": "TCCB _ Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=CjAybOU_8no%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quy tắc ứng xử của cán bộ, viên chức, người lao động Trường Đại học Thủy lợi",
+      "date": "QĐ-HCTH",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=8bhbfhl2xNw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Ban hành quy trình tiếp nhận, kiểm tra, thay thế và sửa chữa thiết bị, vật tư điện, nước để duy trì hoạt động thường xuyên của trường Đại học T",
+      "date": "QTTB - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=gZATHkBqcXo%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Quy định Kiểm soát và xử lý trùng lặp sản phẩm học thuật của Trường Đại học Thủy lợi",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=drVhCSGP8ng%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Quy định sử dụng hệ thống quản lý học tập (LMS) tại Trường Đại học Thủy lợi.",
+      "date": "",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=OegXzfMsulk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "Ban hành quy định so chuẩn, đối sánh chất lượng cơ sở giáo dục và chương trình đào tạo của trường ĐHTL",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=3oW5DMgVmNI%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Quy chế đào tạo trình độ đại học của Trường Đại học Thủy lợi",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=s9XiBP7RvAc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Quy định biên soạn, lựa chọn thẩm định xuất bản, duyệt và sử dụng tài liệu giảng dạy của trường Đại học Thủy lợi",
+      "date": "Thư viện - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=YuODbm8jy6s%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2025) Quy định đào tạo trực tuyến của Trường Đại học Thủy lợi",
+      "date": "ĐT - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=bXW9BCSyDJc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Quy chế nâng bậc lương đối với viên chức và người lao động của trường ĐHTL",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=2de7ZjzKvik%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Ban hành quy chế tổ chức và hoạt động của Trung tâm giáo dục quốc phòng và an ninh thuộc trường ĐHTL",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=NuxZeX09RS0%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Ban hành quy định về công tác đảm bảo chất lượng tại Trường Đại học Thủy lợi",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Btu5N4PG0aM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Chiến lược phát triển Trường Đại học Thủy lợi giai đoạn 2021 - 2030 và tầm nhìn đến năm 2050",
+      "date": "HĐT-NQ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=iIUHx23vgUA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy trình tiếp công dân Trường ĐH Thủy lợi",
+      "date": "Thanh tra - Quy trình",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ouYs-_g_JMc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022)Ban hành Quy chế Tuyển sinh và đào tạo trình độ tiến sĩ của Trường ĐHTL",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=tJ_7rajQs60%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022)Quy chế quản lý, sử dụng tài sản công Trường ĐHTL",
+      "date": "QTTB - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=GVQdZVIp0Gw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Kế hoạch Chiến lược phát triển giai đoạn 2021 - 2025",
+      "date": "HĐT-CLPT",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=fFmJAELK-bs%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Quy định về công tác khảo thí",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=6ZRcMSbAbJE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023)QĐ Ban hành Quy định bổ nhiệm, bổ nhiệm lại, kéo dài thời gian chữ vụ, thôi giữ chức vụ, miễn nhiệm viên chức quản lý các đơn vị của Trường ĐHTL",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=_jEnwwwls54%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2024) Kế hoạch công tác năm 2024",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=zcCOPFxFE40%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Kế hoạch công tác năm 2023",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=2f-_PAZ8u2w%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Phân công nhiệm vụ thành viên BGH Trường ĐH Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ywwA1H9jVNA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Quy chế quản lý hoạt động khoa học công nghệ và phục vụ sản xuất của Trường Đại học Thủy lợi",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=W8tqcjmPrvs%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Quy định quản lý ô tô ra, vào, đỗ trong khuôn viên Trường ĐHTL",
+      "date": "HCTH - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=QEvcQ3cGaXw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Quản lý, khai thác và sử dụng khu Hội thảo nhà K1: hội trường, phòng học khu giảng đường",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=R0qoxOK027M%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Ban hành quy định về Học phần tốt nghiệp trình độ Đại học, Cao đẳng và liên thông hệ chính quy và hệ VLVH theo hệ thống tín chỉ",
+      "date": "ĐT - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ySjsMile5gM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Quy định về thi Olympic môn học, miễn thi, công nhận điểm và điều chỉnh điểm thi những sinh viên tham dự kỳ thi Olympic toàn quố",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=aPxlmZPQBxk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2014) Ban hành quy chế tổ chức và hoạt động của Ban biên tập trang tin điện tử và nội dung truyền thông đa phương tiện của Trường ĐHTL",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=2UCnK5I1xT8%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Ban hành hướng dẫn xây dựng, rà soát chuẩn đầu ra, chương trình đào tạo và đề cương học phần trình độ đại học, thạc sĩ, tiến sĩ",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ffoAzoJk2Dk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) quy định tạm thời về mức trích nộp của các đơn vị hoạt động khoa học công nghệ của Trường Đại học Thủy lợi",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=V7fd_58X-Oc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy định về việc biên soạn, thẩm định, xuất bản tài liệu giảng dạy",
+      "date": "Thư viện - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=fCRoePKo8f4%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2009) Ban hành Quy định về quản lý, sử dụng thiết bị, vật tư",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=jjRY_8GIlFE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2011) Nội quy khu Nội trú sinh viên ĐH Thủy lợi",
+      "date": "TTNT - Nội quy",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=CAyTBxcTTio%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy định chế độ họp trong các hoạt động của trường ĐHTL",
+      "date": "HCTH - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ZDWJT6NKwOg%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Kiện toàn Ban chỉ đạo Chăm sóc sức khỏe ban đầu và phòng chống dịch",
+      "date": "Y tế - QĐ",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=DibYApr-j-A%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2016) Quy định về quản lý công tác giảng dạy trên lớp",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=FYtverdZmUQ%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2014)Quy định về học bổng và trợ cấp xã hội đối với sinh viên đại học, cao đẳng và liên thông cao đẳng lên ĐH hệ chính quy theo hệ thống tín chỉ tại",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=O6Euw1piE54%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2016) Quy định về đánh giá kết quả rèn luyện của SV hệ chính quy",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=znfZZ-p0nNA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2015) Hướng dẫn thực hiện Quy chế đào tạo đại học và cao đẳng, liên thông cao đẳng lên đại học hệ chính quy theo hệ thống tín chỉ (Áp dụng từ K62 tr",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=kK_sNHa3czA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2016) QĐ về xét khen thưởng & kỷ luật sinh viên trình độ Đại học, Cao đẳng & Liên thông hệ chính quy và hệ vừa làm vừa học theo hệ thống tín chỉ",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Py0MyZTONrs%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Điều lệ Tổ chức và hoạt động của Viện kỹ thuật công trình",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ebkd_KoVCPo%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2014) Quy định lấy ý kiến người học về hoạt động giảng dạy của giảng viên",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=kRKPXPZI8ZA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Điều lệ Tổ chức và hoạt động của Văn phòng Tư vấn thẩm định thiết kế và GĐCLCT",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Kgb7kcydjso%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Ban hành nội quy Phòng thí nghiệm Kỹ thuật hóa học",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=A2thT5hBJqE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2014) Quy định về Học phần tốt nghiệp trình độ Đại học hệ chính quy thuộc Chương trình tiên tiến",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=SQHyp70qskQ%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định khảo sát sự phản hồi của người học về hoạt động hỗ trợ, phục vụ của đội ngũ nhân viên hỗ trợ",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=c9Ai_XnpcGE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định quản lý hồ sơ sinh viên và ứng dụng công nghệ thông tin trong quản lý hồ sơ sinh viên của Trường ĐHTL",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=D1bzoM4NjcQ%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định khảo sát sinh viên trước khi tốt nghiệp về đánh giá chất lượng đào tạo",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=B8aeFqO6wM0%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Quy định về tổ chức đào tạo và quản lý chương trình tiên tiến trình độ đại học hệ chính quy (Áp dụng từ K62 về trước)",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=cIa0bMj5zhc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định kéo dài thời gian làm việc và chế độ hưu trí",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Q_q6I_3Keoc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định trợ giảng tại Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=RUNDi-kRqK8%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định về Chuẩn đầu ra ngoại ngữ, điều kiện miễn học/thi và công nhận điểm tương đương đối với các học phần Tiếng Anh trong chương trình đào",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=GQWpbR7kXF4%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định tạm thời về chế độ phụ cấp lương của giảng viên nhóm ngành có nhu cầu nhân lực cao, tuyển sinh tốt tại Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=TS8rkQ9HG2k%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định quản lý hồ sơ viên chức và người lao động",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=zforgDFkU2Q%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Kế hoạch công tác năm 2020",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=WtYmDjlj3DM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018)Nội quy phòng thí nghiệm, thực hành Trường Đại học Thủy lợi",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=ThpuQcVJG2Y%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2007) Quy chế về định mức sử dụng văn phòng phẩm",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=cTaN7xwcEKc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018)Ban hành quy định về quản lý và sử dụng Hội trường T45",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=4qfu48aG0rE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy trình khảo sát Nhà tuyển dụng đối với cựu sinh viên tốt nghiệp Trường Đại học Thủy lợi",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Z6Gcd1stcE0%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy trình khảo sát sinh viên tốt nghiệp về tình hình việc làm và thu nhập",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=DlH3VHcXifU%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Kế hoạch công tác năm 2019",
+      "date": "HCTH - Kế hoạch công tác",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=T5dCRfdp4uo%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Điều chỉnh quy trình chấm thi tự luận",
+      "date": "KTKĐCL- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=-UE3SWkMBag%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018)Quy chế phối hợp công tác giữa Ban Giám hiệu và Ban chấp hành Công đoàn Trường nhiệm kỳ 2017-2022",
+      "date": "HCTH - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=jvyumQMNcvQ%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Ban hành quy trình tiếp nhận, kiểm tra, sửa chữa và thay thế thiết bị, vật tư điện, nước để duy trì hoạt động thường xuyên của Trường ĐHTL",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=BJJ_ChdI3cw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy chế thực hiện dân chủ trong hoạt động của Trường Đại học Thủy lợi 2021",
+      "date": "TCCB- Quy chế",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=rwVQ5SycKJM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019) Quy định chức năng, nhiệm vụ các phòng chức năng, tổ chức phục vụ đào tạo, nghiên cứu khoa học, công nghệ và dịch vụ trực thuộc Trường ĐHTL",
+      "date": "TCCB- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=iBD0LcLUmSk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2019)Quy định bổ nhiệm, bổ nhiệm lại, thôi giữ chức vụ, từ chức, miễn nhiệm viên chức quản lý các đơn vị thuộc Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=RfMpxJF5rBc%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2023) Quy chế đào tạo, bồi dưỡng viên chức và Người lao động của Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=8gGzV4lYheE%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Quy chế nâng bậc lương trước thời hạn đối với công chức, viên chức và người lao động của Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=mw7gq2cgOmA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Quy định thỉnh giảng tại Trường Đại học Thủy lợi",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=joVkxOHK38g%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Điều lệ Tổ chức và hoạt động của Trung tâm Khoa học và TKKTTL",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=rT88r8L5Qrk%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2007) Điều lệ Tổ chức và hoạt động của Viện Thủy lợi và Môi trường",
+      "date": "TCCB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=frktoS8GLKM%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2020) Quy định quản lý modul lịch công tác tuần trường ĐHTL",
+      "date": "HCTH - Thông báo",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=jJNqy0bXK0g%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy chế thi đua, khen thưởng Trường Đại học Thủy lợi",
+      "date": "TCCB _ Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=b0YweNfqoTA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2016) Quy định xét tuyển trình độ Đại học hình thức vừa làm vừa học",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=LpDRy3LepJs%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2017) Hướng dẫn thực hiện quy chế đào tạo vừa làm vừa học trình độ Đại học",
+      "date": "ĐT- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=XydcirFaifY%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2009) Quy định thực hiện nếp sống văn hoá học đường đối với người học",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=xyxDlJfZ81c%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy định công tác Giáo viên chủ nhiệm kiêm Cố vấn học tập các lớp sinh viên hệ chính quy bậc đại học",
+      "date": "CTCTSV- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=tSgG0wwSUYA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2013) Quy định hoạt động khoa học công nghệ và phục vụ sản xuất",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Lx36ruqeTbw%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2021) Quy định về hỗ trợ kinh phí tham dự hội nghị, hội thảo, công bố quốc tế và sở hữu trí tuệ",
+      "date": "KHCN- Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=_DHu_kA8xyI%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2018) Quy chế hoạt động hợp tác quốc tế của Trường Đại học Thủy lợi",
+      "date": "HTQT - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=T6diXQ9mO9U%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2015) Quy định trách nhiệm trong công tác phòng cháy và chữa cháy",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=Kc6vsZ-tOVI%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2015) Quy trình thực hiện sửa chữa lớn, xây dựng nhỏ cơ sở vật chất Trường Đại học Thủy lợi",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=PlxIq42QOXo%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2015) Quy định quản lý, sử dụng thiết bị điều hòa, máy chiếu tại khu giảng đường Trường Đại học Thủy lợi",
+      "date": "QTTB - Quyết định",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=NFEU16RpfMs%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Quy chế tiếp công dân tại Trường Đại học Thủy lợi",
+      "date": "Thanh tra - Quy chế",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=W2a7r21byxg%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    },
+    {
+      "title": "(2022) Nội quy tiếp công dân Trường ĐH Thủy lợi",
+      "date": "Thanh tra - Nội quy",
+      "dept": "",
+      "download_url": "https://hanhchinh.tlu.edu.vn/LinkClick.aspx?fileticket=U-I08sHQUzA%3d&tabid=180&mid=546",
+      "source": "hanhchinh.tlu.edu.vn"
+    }
+  ]
+}

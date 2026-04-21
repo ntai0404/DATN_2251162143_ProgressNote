@@ -1,0 +1,36 @@
+# OCR Result: 2019 Điều chỉnh quy trình chấm thi tự luận.pdf
+
+**Extracted at:** 2026-04-21 16:54:00,639
+
+---
+
+BỘ NÔNG NGHIỆP PTNT TRƯỜNG ĐAI HỌC THỦY LỢI
+CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM Độc lập Tự do Hạnh phúc
+Số: 529 RQĐ-ĐHTL
+Hà Nội, ngày 28 tháng 3 năm 2019
+QUYẾT ĐỊNH
+Về việc điều chỉnh quy trình chấm thi tự luận
+HIỆU TRƯỞNG TRƯỜNG ĐẠI HỌC THỦY LỢI
+Căn cứ Quy định về công tác khảo thí ban hành theo quyết định 2422/Q4-ĐHTL ngày 27 tháng 11 năm 2017; Căn cứ quy trình chấm thi tự luận của các Trường Đại học; cao đẳng và thực tiễn triển khai công tác chấm thi tại Truờng đại học Thủy lợi; Căn cứ kết luận của Ban giám hiệu tại cuộc shọp về công tác kiểm tra, thi và đánh giá các học phần môn học với các bộ môn" ngày 28 tháng 3 năm 2019; Xét đề nghị của Phòng Khảo thí và KĐCL,
+QUYẾT ĐỊNH: Đíều 1. Điều chỉnh quy trình về công tác chấm thi tự luận: Chi tiết nhu trong phụ lục đính kèm. Triển khai cho tất cả các hệ đào tạo tạo các cơ sở của Nhà trường kể từ giai đoạn 2, kỳ II năm học 2018-2019.
+Điều 2. Trưởng các bộ môn có trách nhiệm phổ biến và đôn đốc các giảng viên thực hiện nghiêm chỉnh quy trình về công tác chấm thi tự luận: Phòng Khảo thí và KĐCL có trách nhiệm giám sát việc các Bộ môn việc thực hiện quy trình chấm thi.l.
+Nơi nhận: BGH; Như điều 2; Lưu: VT, KT&KĐCL.
+P'KLPKÊU TRƯỞNG TrvJBHÓ YfP]FRƯởNG { EAlli? ThcY 2(ys GS ỊS Nguyễn Trung Việt
+Phụ lục I: Quy trình chấm thi tự luận
+Trong vòng 03 ngày sau khi tổ chức thi môn học; TrưởngJphó các Bộ mônlgiáo viên nhận lại túi bài thi bao gồm bài thi đã rọc phách và phiếu chấm thi tại phòng KT & KĐCL (đối với các môn thitổ chức tại Hà Nội và Phố Hiến) , Ban ĐT&CTSV của CS2 (đối với các môn thi tổ chức tại CS2 và Phòng ĐT của Viện Miền Trung (đối với các môn học hệ VHVL tạo Viện Miền Trung) quá trình giao/nhận có ký sổ theo dõi. Bộ môn tổ chức chấm thi tại Văn phòng Bộ môn theo quy trình sau: CB chấm thi số I: Gạch chéo toàn bộ phần bỏ trống trong bài thi. Chấm trực tiếp trên bài thi, ghi đầy đủ điểm thành phần tuơng ứng với thang điểm trong đáp án. Điểm tổng toàn bài được ghi và khoanh tròn cuối bài thi. 4 CB chấm thi số 2: Chấm lại toàn bộ bài thi và chỉ ghi điểm từng câu; điểm tổng vào ô quy định ở lề trái tờ giấy thi. Trong trường hợp không có mẫu giấy thi như quy định, CB chấm thi số 2 ghi điểm chấm từng câu của mình vào vị trí thích hợp trên tờ giấy thi. Hai CB chấm thi thống nhất điểm rồi ghi điểm kết luận của bài thi (bằng số và bằng chữ), kỹ và ghi rõ họ tên vào ô quy định trên tờ giấy thi. Trường hợp hai CB chấm thi không thống nhất được điểm thi thì Trưởng bộ môn trao đổi với hai CB chấm thi và quyết định điểm của bài thi. Nếu có sự thay đổi điểm chấm thì gạch chéo điểm đã cho và ghi điểm mới vào bên cạnh rồi hai CBCT cùng ký tên để xác nhận việc sửa điểm. 4 CB chấm thi vào điểm từ bài thi lên phiếu chấm thi mẫu KTO3 theo đúng số phách. Phiếu chấm thi yêu cầu ghi đầy đủ cả bằng số và chữ, chữ ký, họ tên của 02 CB chấm thi và chữ ký của Trưởngphó Bộ môn/ban. Các bài thi phải được sắp xếp theo số phác từ nhỏ đến lớn theo phiếu chấm thi. Bộ môn/CB chấm thi phải chịu trách nhiệm về kết quả chấm thi cả trên bài thi và phiếu chấm thi.
+Cá, (Kyỷ
+TRỰỜNG ĐẠI HQC THỦY LỢI BMi thi mdn;_
+Học pbàn:
+(Xy
+A
+H
+Ho và ten sinh viên: Sinh ng y: _
+Lớp:
+Thi ngày
+Ma
+# 4 1 {
+8 ; 41
+Thon 9 D6+ Ẻ 9N  b 1 { 3  3 ẵ 3 2 x 2 2
+2
+8 1 3 8 % 8 4 8 8 / 8 ẳ ; #
+5415755v5NYHJTYT TiA @R6FNGi7 7iNIS

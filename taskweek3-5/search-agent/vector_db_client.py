@@ -5,7 +5,7 @@ import os
 class VectorDBClient:
     def __init__(self, host="localhost", port=6333):
         self.client = QdrantClient(host=host, port=port)
-        self.collection_name = "tlu_regulations"
+        self.collection_name = "tlu_knowledge"
 
     def init_collection(self, vector_size=384): # Updated for paraphrase-multilingual-MiniLM-L12-v2
         if self.client.collection_exists(self.collection_name):
@@ -22,8 +22,9 @@ class VectorDBClient:
         points = []
         import hashlib
         for chunk, vector in zip(chunks, vectors):
-            # Create a unique ID from title and content hash
-            content_hash = hashlib.md5(f"{chunk['title']}{chunk['content']}".encode()).hexdigest()
+            # Create a deterministic ID from title only (Filename + Article ID)
+            # This ensures that modifications to content will OVERWRITE the old vector.
+            content_hash = hashlib.md5(chunk['title'].encode()).hexdigest()
             # Qdrant prefers UUID string or integer. We'll use a deterministic approach.
             points.append(models.PointStruct(
                 id=content_hash[:32], # Use hex string as ID
