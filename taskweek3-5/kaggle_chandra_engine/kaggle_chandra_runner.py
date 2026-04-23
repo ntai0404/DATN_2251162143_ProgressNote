@@ -8,7 +8,7 @@ from transformers import BitsAndBytesConfig
 from chandra.model.schema import BatchInputItem
 from chandra.model.hf import generate_hf
 from chandra.settings import settings
-from chandra.parse import convert_to_markdown
+from chandra.output import parse_markdown
 
 class KaggleChandraRunner:
     """
@@ -69,12 +69,10 @@ class KaggleChandraRunner:
             raw_html = results[0].raw
             
             # Convert HTML to beautiful markdown using official parser
-            output_dir = os.path.dirname(output_path) or "."
-            md_text = convert_to_markdown(
+            md_text = parse_markdown(
                 raw_html, 
                 include_images=False, 
-                include_headers_footers=False,
-                output_dir=output_dir
+                include_headers_footers=False
             )
             
             final_md += f"\n\n## PAGE {i+1}\n" + md_text
