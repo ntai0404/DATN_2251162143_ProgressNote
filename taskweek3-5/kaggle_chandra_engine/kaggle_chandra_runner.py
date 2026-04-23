@@ -1,44 +1,87 @@
 import os
-import subprocess
-import shutil
+import torch
+import fitz
+from PIL import Image
+from transformers import BitsAndBytesConfig
+
+# Import from official chandra library (installed via pip)
+from chandra.model.schema import BatchInputItem
+from chandra.model.hf import generate_hf
+from chandra.settings import settings
+from chandra.parse import convert_to_markdown
 
 class KaggleChandraRunner:
     """
-    Standard Chandra OCR Runner using the official `chandra-ocr` package.
-    Optimized for Kaggle using the HuggingFace (hf) method locally.
+    Kaggle-optimized Chandra OCR Runner.
+    Uses 4-bit quantization and reduced DPI to prevent CUDA Out Of Memory on T4.
     """
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
-        print(f"🚀 Using official Chandra OCR CLI engine (Model: {model_id})")
+        # Apply Kaggle T4 limits
+        settings.MAX_OUTPUT_TOKENS = 4096
+        settings.IMAGE_DPI = 150  # Reduced from 192 to save VRAM
+        settings.MODEL_CHECKPOINT = model_id
+        
+        print(f"🚀 Loading Model {model_id} in 4-bit quantization (Kaggle T4 Safe)...")
+        self.model = self._load_quantized_model()
+
+    def _load_quantized_model(self):
+        from transformers import AutoModelForImageTextToText, AutoProcessor
+        
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4",
+        )
+        
+        model = AutoModelForImageTextToText.from_pretrained(
+            settings.MODEL_CHECKPOINT,
+            device_map="auto",
+            quantization_config=quantization_config,
+            attn_implementation="sdpa",
+            trust_remote_code=True
+        )
+        model = model.eval()
+        
+        processor = AutoProcessor.from_pretrained(settings.MODEL_CHECKPOINT, trust_remote_code=True)
+        processor.tokenizer.padding_side = "left"
+        model.processor = processor
+        return model
 
     def process_pdf(self, pdf_path, output_path):
         if not os.path.exists(pdf_path):
             raise FileNotFoundError(f"PDF file not found at {pdf_path}")
             
-        output_dir = os.path.dirname(output_path) or "."
-        temp_out = os.path.join(output_dir, "chandra_temp_output")
+        doc = fitz.open(pdf_path)
+        final_md = ""
         
-        # We use the official chandra CLI which handles the Qwen architecture natively
-        cmd = ["chandra", pdf_path, temp_out, "--method", "hf"]
-        print(f"📄 Executing: {' '.join(cmd)}")
-        
-        try:
-            subprocess.run(cmd, check=True)
+        for i in range(len(doc)):
+            print(f"📄 Processing Page {i+1}/{len(doc)}...")
+            page = doc[i]
+            pix = page.get_pixmap(dpi=settings.IMAGE_DPI)
+            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             
-            # Chandra creates temp_out/<basename>/<basename>.md
-            base_name = os.path.splitext(os.path.basename(pdf_path))[0]
-            generated_md = os.path.join(temp_out, base_name, f"{base_name}.md")
+            # Prepare item for Chandra
+            item = BatchInputItem(image=img, prompt_type="ocr_layout")
             
-            if os.path.exists(generated_md):
-                shutil.copy2(generated_md, output_path)
-                print(f"✨ Finished! Saved to {output_path}")
-            else:
-                print(f"❌ Output markdown not found at {generated_md}")
-                
-        except subprocess.CalledProcessError as e:
-            print(f"❌ Error during Chandra execution: {e}")
-        finally:
-            if os.path.exists(temp_out):
-                shutil.rmtree(temp_out, ignore_errors=True)
+            # Generate HTML using official Chandra logic
+            results = generate_hf([item], self.model, max_output_tokens=settings.MAX_OUTPUT_TOKENS)
+            raw_html = results[0].raw
+            
+            # Convert HTML to beautiful markdown using official parser
+            output_dir = os.path.dirname(output_path) or "."
+            md_text = convert_to_markdown(
+                raw_html, 
+                include_images=False, 
+                include_headers_footers=False,
+                output_dir=output_dir
+            )
+            
+            final_md += f"\n\n## PAGE {i+1}\n" + md_text
+            
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(final_md)
+        print(f"✨ Finished! Saved to {output_path}")
 
 if __name__ == "__main__":
     test_pdf = "(2025) Quy định sử dụng hệ thống quản lý học tập (LMS) tại Trường Đại học Thủy lợi..pdf"
