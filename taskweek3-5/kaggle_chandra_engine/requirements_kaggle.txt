@@ -1,2 +1,4 @@
 chandra-ocr[hf]
 bitsandbytes
+pymupdf
+pillow
