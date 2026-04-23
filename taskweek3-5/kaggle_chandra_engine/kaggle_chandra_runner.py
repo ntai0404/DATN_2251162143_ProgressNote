@@ -41,7 +41,7 @@ class KaggleChandraRunner:
                 shutil.rmtree(temp_out, ignore_errors=True)
 
 if __name__ == "__main__":
-    test_pdf = "test_sample.pdf"
+    test_pdf = "(2025) Quy định sử dụng hệ thống quản lý học tập (LMS) tại Trường Đại học Thủy lợi..pdf"
     if os.path.exists(test_pdf):
         runner = KaggleChandraRunner()
         runner.process_pdf(test_pdf, "output.md")
