@@ -1,18 +1,18 @@
 import torch, os, fitz
 from PIL import Image
 from bs4 import BeautifulSoup
-from transformers import AutoModelForVision2Seq, AutoProcessor
+from transformers import AutoModelForCausalLM, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
 class KaggleChandraRunner:
     """
     Standard Chandra OCR Runner using Transformers library (Official Method).
-    Optimized for Kaggle T4 GPU using Vision2Seq class.
+    Optimized for Kaggle T4 GPU.
     """
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
         print(f"🚀 Loading Official Chandra Model: {model_id}")
-        # Using AutoModelForVision2Seq is mandatory for vision-based generation
-        self.model = AutoModelForVision2Seq.from_pretrained(
+        # Using CausalLM with trust_remote_code is the official recommendation for Chandra-2
+        self.model = AutoModelForCausalLM.from_pretrained(
             model_id, 
             torch_dtype="auto", 
             device_map="auto", 
@@ -50,13 +50,23 @@ class KaggleChandraRunner:
                 text=[text], images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt"
             ).to("cuda")
 
+            # CRITICAL FIX: Filtering inputs to only what the model's generate method expects
+            # This prevents the 'model_kwargs' error on custom architectures
+            allowed_kwargs = ['input_ids', 'attention_mask', 'pixel_values', 'image_grid_thw', 'pixel_values_videos', 'video_grid_thw']
+            filtered_inputs = {k: v for k, v in inputs.items() if k in allowed_kwargs}
+
             # Generation logic
             with torch.no_grad():
-                generated_ids = self.model.generate(**inputs, max_new_tokens=4096)
+                generated_ids = self.model.generate(
+                    **filtered_inputs, 
+                    max_new_tokens=4096,
+                    use_cache=True
+                )
                 
             generated_ids_trimmed = [out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)]
             output_text = self.processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
             
+            # Extract and clean
             soup = BeautifulSoup(output_text, 'html.parser')
             final_md += f"\n\n## PAGE {i+1}\n" + soup.get_text().strip()
             
