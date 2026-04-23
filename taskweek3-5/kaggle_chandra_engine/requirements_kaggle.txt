@@ -1,8 +1,1 @@
-transformers>=4.45.0
-qwen-vl-utils
-accelerate
-torch
-torchvision
-pymupdf
-beautifulsoup4
-pillow
+chandra-ocr[hf]

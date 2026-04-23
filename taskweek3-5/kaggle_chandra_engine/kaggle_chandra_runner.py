@@ -1,78 +1,44 @@
-import torch, os, fitz
-from PIL import Image
-from bs4 import BeautifulSoup
-from transformers import AutoModelForCausalLM, AutoProcessor
-from qwen_vl_utils import process_vision_info
+import os
+import subprocess
+import shutil
 
 class KaggleChandraRunner:
     """
-    Standard Chandra OCR Runner using Transformers library (Official Method).
-    Optimized for Kaggle T4 GPU.
+    Standard Chandra OCR Runner using the official `chandra-ocr` package.
+    Optimized for Kaggle using the HuggingFace (hf) method locally.
     """
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
-        print(f"🚀 Loading Official Chandra Model: {model_id}")
-        # Using CausalLM with trust_remote_code is the official recommendation for Chandra-2
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_id, 
-            torch_dtype="auto", 
-            device_map="auto", 
-            trust_remote_code=True,
-            ignore_mismatched_sizes=True,
-            _attn_implementation="sdpa"
-        )
-        self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
-        print("✅ Model loaded successfully.")
+        print(f"🚀 Using official Chandra OCR CLI engine (Model: {model_id})")
 
     def process_pdf(self, pdf_path, output_path):
         if not os.path.exists(pdf_path):
             raise FileNotFoundError(f"PDF file not found at {pdf_path}")
             
-        doc = fitz.open(pdf_path)
-        final_md = ""
+        output_dir = os.path.dirname(output_path) or "."
+        temp_out = os.path.join(output_dir, "chandra_temp_output")
         
-        for i in range(len(doc)):
-            print(f"📄 Processing Page {i+1}/{len(doc)}...")
-            page = doc[i]
-            pix = page.get_pixmap(dpi=300)
-            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        # We use the official chandra CLI which handles the Qwen architecture natively
+        cmd = ["chandra", pdf_path, temp_out, "--method", "hf"]
+        print(f"📄 Executing: {' '.join(cmd)}")
+        
+        try:
+            subprocess.run(cmd, check=True)
             
-            messages = [{
-                "role": "user",
-                "content": [
-                    {"type": "image", "image": img},
-                    {"type": "text", "text": "OCR this image to HTML with data-bbox and data-label."}
-                ]
-            }]
+            # Chandra creates temp_out/<basename>/<basename>.md
+            base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+            generated_md = os.path.join(temp_out, base_name, f"{base_name}.md")
             
-            text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            image_inputs, video_inputs = process_vision_info(messages)
-            inputs = self.processor(
-                text=[text], images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt"
-            ).to("cuda")
-
-            # CRITICAL FIX: Filtering inputs to only what the model's generate method expects
-            # This prevents the 'model_kwargs' error on custom architectures
-            allowed_kwargs = ['input_ids', 'attention_mask', 'pixel_values', 'image_grid_thw', 'pixel_values_videos', 'video_grid_thw']
-            filtered_inputs = {k: v for k, v in inputs.items() if k in allowed_kwargs}
-
-            # Generation logic
-            with torch.no_grad():
-                generated_ids = self.model.generate(
-                    **filtered_inputs, 
-                    max_new_tokens=4096,
-                    use_cache=True
-                )
+            if os.path.exists(generated_md):
+                shutil.copy2(generated_md, output_path)
+                print(f"✨ Finished! Saved to {output_path}")
+            else:
+                print(f"❌ Output markdown not found at {generated_md}")
                 
-            generated_ids_trimmed = [out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)]
-            output_text = self.processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-            
-            # Extract and clean
-            soup = BeautifulSoup(output_text, 'html.parser')
-            final_md += f"\n\n## PAGE {i+1}\n" + soup.get_text().strip()
-            
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(final_md)
-        print(f"✨ Finished! Saved to {output_path}")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Error during Chandra execution: {e}")
+        finally:
+            if os.path.exists(temp_out):
+                shutil.rmtree(temp_out, ignore_errors=True)
 
 if __name__ == "__main__":
     test_pdf = "test_sample.pdf"
