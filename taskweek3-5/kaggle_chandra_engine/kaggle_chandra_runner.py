@@ -1,24 +1,24 @@
 import torch, os, fitz
 from PIL import Image
 from bs4 import BeautifulSoup
-from transformers import AutoModelForCausalLM, AutoProcessor
+from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
 class KaggleChandraRunner:
     """
     Standard Chandra OCR Runner using Transformers library (Official Method).
-    Optimized for Kaggle T4 GPU with SDPA implementation.
+    Optimized for Kaggle T4 GPU using Vision2Seq class.
     """
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
         print(f"🚀 Loading Official Chandra Model: {model_id}")
-        # Force SDPA attention implementation for T4 compatibility
-        self.model = AutoModelForCausalLM.from_pretrained(
+        # Using AutoModelForVision2Seq is mandatory for vision-based generation
+        self.model = AutoModelForVision2Seq.from_pretrained(
             model_id, 
             torch_dtype="auto", 
             device_map="auto", 
             trust_remote_code=True,
             ignore_mismatched_sizes=True,
-            _attn_implementation="sdpa" # Essential for T4 which lacks Flash-Attn 2 support
+            _attn_implementation="sdpa"
         )
         self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
         print("✅ Model loaded successfully.")
@@ -36,7 +36,6 @@ class KaggleChandraRunner:
             pix = page.get_pixmap(dpi=300)
             img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             
-            # Standard Qwen2-VL prompt format
             messages = [{
                 "role": "user",
                 "content": [
@@ -58,7 +57,6 @@ class KaggleChandraRunner:
             generated_ids_trimmed = [out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)]
             output_text = self.processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
             
-            # Extract content
             soup = BeautifulSoup(output_text, 'html.parser')
             final_md += f"\n\n## PAGE {i+1}\n" + soup.get_text().strip()
             
@@ -67,7 +65,6 @@ class KaggleChandraRunner:
         print(f"✨ Finished! Saved to {output_path}")
 
 if __name__ == "__main__":
-    # Test script for local or kaggle
     test_pdf = "test_sample.pdf"
     if os.path.exists(test_pdf):
         runner = KaggleChandraRunner()
