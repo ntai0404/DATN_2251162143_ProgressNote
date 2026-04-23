@@ -1,0 +1,71 @@
+# [CELL 1] - UNIFIED HIGH-FIDELITY OCR (COPY EVERYTHING BELOW)
+
+# 1. INSTALL & INITIALIZE
+!pip install -q vllm>=0.5.0 pymupdf beautifulsoup4 pandas tqdm
+
+import os, torch, fitz
+from PIL import Image
+from bs4 import BeautifulSoup
+from vllm import LLM, SamplingParams
+from tqdm import tqdm
+
+# --- 2. OCR MASTER CLASS ---
+class ChandraMaster:
+    def __init__(self, model_id="datalab-to/chandra-ocr-2"):
+        print("🚀 Đang khởi tạo Chandra v2 (vLLM) trên GPU T4...")
+        self.llm = LLM(model=model_id, trust_remote_code=True, max_model_len=12288, gpu_memory_utilization=0.9)
+        self.params = SamplingParams(temperature=0.0, max_tokens=8192, stop=["<|im_end|>", "<|endoftext|>"])
+
+    def process_large_file(self, pdf_path):
+        doc = fitz.open(pdf_path)
+        final_md = f"# OCR KẾT QUẢ: {os.path.basename(pdf_path)}\n\n"
+        for i in range(len(doc)):
+            print(f"📄 Đang xử lý trang {i+1}/{len(doc)}...")
+            page = doc[i]
+            pix = page.get_pixmap(dpi=300)
+            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+            
+            # Tiling logic
+            width, height = img.size
+            mid = height // 2
+            overlap = 200
+            tiles = [img.crop((0, 0, width, mid + overlap)), img.crop((0, mid - overlap, width, height))]
+            
+            page_html = ""
+            for t in tiles:
+                out = self.llm.generate({"prompt": f"<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>OCR this image to HTML with data-bbox and data-label.<|im_end|>\n<|im_start|>assistant\n", "multi_modal_data": {"image": t}}, sampling_params=self.params)
+                page_html += out[0].outputs[0].text
+            
+            # Contextual Parsing
+            soup = BeautifulSoup(page_html, 'html.parser')
+            blocks = soup.find_all("div", attrs={"data-label": ["Section-Header", "Text", "Table"]})
+            final_md += f"\n\n## TRANG {i+1}\n"
+            for b in blocks:
+                label, content = b.get("data-label"), b.get_text().strip()
+                if label == "Section-Header": final_md += f"\n### {content}\n"
+                elif label == "Table": final_md += f"\n{str(b.table)}\n"
+                else: final_md += f"{content} "
+        return final_md
+
+# --- 3. AUTO-FIND LARGEST PDF & EXECUTE ---
+INPUT_DIR = "/kaggle/input/"
+largest_file = None
+max_size = 0
+
+for root, _, files in os.walk(INPUT_DIR):
+    for f in files:
+        if f.endswith(".pdf"):
+            fp = os.path.join(root, f)
+            size = os.path.getsize(fp)
+            if size > max_size: max_size, largest_file = size, fp
+
+if largest_file:
+    print(f"🎯 Tìm thấy file lớn nhất: {os.path.basename(largest_file)} ({max_size/1024/1024:.2f} MB)")
+    master = ChandraMaster()
+    md_output = master.process_large_file(largest_file)
+    with open("final_high_fidelity_ocr.md", "w", encoding="utf-8") as f:
+        f.write(md_output)
+    print("✨ XONG! Kết quả lưu tại 'final_high_fidelity_ocr.md'.")
+else:
+    print("❌ Không tìm thấy file PDF!")
+    
