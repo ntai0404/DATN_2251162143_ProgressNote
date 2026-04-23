@@ -7,17 +7,18 @@ from qwen_vl_utils import process_vision_info
 class KaggleChandraRunner:
     """
     Standard Chandra OCR Runner using Transformers library (Official Method).
-    Optimized for Kaggle T4 GPU.
+    Optimized for Kaggle T4 GPU with SDPA implementation.
     """
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
         print(f"🚀 Loading Official Chandra Model: {model_id}")
-        # Using AutoModelForCausalLM to support Qwen 3.5 / Chandra hybrid architecture
+        # Force SDPA attention implementation for T4 compatibility
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id, 
             torch_dtype="auto", 
             device_map="auto", 
             trust_remote_code=True,
-            ignore_mismatched_sizes=True  # Essential for Chandra-2 custom architecture
+            ignore_mismatched_sizes=True,
+            _attn_implementation="sdpa" # Essential for T4 which lacks Flash-Attn 2 support
         )
         self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
         print("✅ Model loaded successfully.")
