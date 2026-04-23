@@ -1,105 +1,65 @@
-import os
-import torch
-import fitz  # PyMuPDF
+import torch, os, fitz
 from PIL import Image
 from bs4 import BeautifulSoup
-from vllm import LLM, SamplingParams
+from transformers import Qwen2VLForConditionalGeneration, AutoProcessor
+from qwen_vl_utils import process_vision_info
 
 class KaggleChandraRunner:
-    def __init__(self, model_id="datalab-to/chandra-ocr-2", use_tiling=True):
-        print(f"🚀 Initializing Chandra v2 on vLLM Engine...")
-        self.use_tiling = use_tiling
-        
-        # vLLM setup optimized for T4 GPU
-        self.llm = LLM(
-            model=model_id,
-            trust_remote_code=True,
-            max_model_len=16384,
-            gpu_memory_utilization=0.9,
-            tensor_parallel_size=1
+    """
+    Standard Chandra OCR Runner using Transformers library (Official Method).
+    Optimized for Kaggle T4 GPU.
+    """
+    def __init__(self, model_id="datalab-to/chandra-ocr-2"):
+        print(f"🚀 Loading Official Chandra Model: {model_id}")
+        self.model = Qwen2VLForConditionalGeneration.from_pretrained(
+            model_id, 
+            torch_dtype="auto", 
+            device_map="auto", 
+            trust_remote_code=True
         )
-        
-        self.sampling_params = SamplingParams(
-            temperature=0.0,
-            max_tokens=8192,
-            stop=["<|im_end|>", "<|endoftext|>"]
-        )
+        self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
+        print("✅ Model loaded successfully.")
 
-        self.layout_prompt = "OCR this image to HTML with data-bbox and data-label (Section-Header, Table, Text)."
-
-    def process_pdf(self, pdf_path):
+    def process_pdf(self, pdf_path, output_path):
         doc = fitz.open(pdf_path)
-        final_markdown = ""
+        final_md = ""
         
         for i in range(len(doc)):
-            print(f"📄 Processing Page {i+1}...")
+            print(f"📄 Processing Page {i+1}/{len(doc)}...")
             page = doc[i]
             pix = page.get_pixmap(dpi=300)
             img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             
-            if self.use_tiling:
-                # --- REAL TILING LOGIC (Vertical Split with Overlap) ---
-                width, height = img.size
-                mid = height // 2
-                overlap = 200 # pixel overlap to avoid cutting sentences
-                
-                tiles = [
-                    img.crop((0, 0, width, mid + overlap)),        # Top half
-                    img.crop((0, mid - overlap, width, height))    # Bottom half
+            # Standard Qwen2-VL prompt format
+            messages = [{
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": img},
+                    {"type": "text", "text": "OCR this image to HTML with data-bbox and data-label."}
                 ]
-                
-                page_html = ""
-                for tile in tiles:
-                    page_html += self._run_inference(tile)
-            else:
-                page_html = self._run_inference(img)
+            }]
             
-            # --- CONTEXTUAL MAPPING ---
-            final_markdown += f"\n\n## TRANG {i+1}\n"
-            final_markdown += self._parse_to_structured_markdown(page_html)
-            
-        return final_markdown
+            text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+            image_inputs, video_inputs = process_vision_info(messages)
+            inputs = self.processor(
+                text=[text], images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt"
+            ).to("cuda")
 
-    def _run_inference(self, img_obj):
-        output = self.llm.generate(
-            {
-                "prompt": f"<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>{self.layout_prompt}<|im_end|>\n<|im_start|>assistant\n",
-                "multi_modal_data": {"image": img_obj},
-            },
-            sampling_params=self.sampling_params
-        )
-        return output[0].outputs[0].text
-
-    def _parse_to_structured_markdown(self, html):
-        """Map Text blocks into their corresponding Section-Headers"""
-        soup = BeautifulSoup(html, 'html.parser')
-        markdown_output = []
-        
-        # Get all relevant blocks in document order
-        blocks = soup.find_all("div", attrs={"data-label": ["Section-Header", "Text", "Table"]})
-        
-        for block in blocks:
-            label = block.get("data-label")
-            content = block.get_text().strip()
+            generated_ids = self.model.generate(**inputs, max_new_tokens=4096)
+            generated_ids_trimmed = [out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)]
+            output_text = self.processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
             
-            if label == "Section-Header":
-                # New Article/Clause
-                markdown_output.append(f"\n### {content}\n")
-            elif label == "Table":
-                # Preserve Table structure
-                markdown_output.append(f"\n{str(block.table)}\n")
-            else:
-                # Text content, append to current stream
-                markdown_output.append(f"{content} ")
-                
-        return "".join(markdown_output)
+            # Simple extraction from HTML-like output
+            soup = BeautifulSoup(output_text, 'html.parser')
+            final_md += f"\n\n## PAGE {i+1}\n" + soup.get_text().strip()
+            
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(final_md)
+        print(f"✨ Finished! Saved to {output_path}")
 
 if __name__ == "__main__":
-    # Test path on Kaggle
-    test_pdf = "/kaggle/input/tlu-data/sample.pdf"
+    # Test script for local or kaggle
+    test_pdf = "test_sample.pdf"
     if os.path.exists(test_pdf):
-        runner = KaggleChandraRunner(use_tiling=True)
-        md_result = runner.process_pdf(test_pdf)
-        with open("ocr_output.md", "w", encoding="utf-8") as f:
-            f.write(md_result)
-        print("✅ OCR Complete. Output saved to ocr_output.md")
+        runner = KaggleChandraRunner()
+        runner.process_pdf(test_pdf, "output.md")

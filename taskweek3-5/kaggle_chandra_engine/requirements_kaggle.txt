@@ -1,9 +1,8 @@
-vllm>=0.5.0
+transformers>=4.45.0
+qwen-vl-utils
+accelerate
 torch
 torchvision
 pymupdf
-Pillow
 beautifulsoup4
-pandas
-tqdm
-    
+pillow
