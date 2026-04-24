@@ -1,3 +1,4 @@
+import hashlib
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 import os
@@ -20,12 +21,10 @@ class VectorDBClient:
 
     def upsert_chunks(self, chunks, vectors):
         points = []
-        import hashlib
         for chunk, vector in zip(chunks, vectors):
             # Create a deterministic ID from title only (Filename + Article ID)
             # This ensures that modifications to content will OVERWRITE the old vector.
             content_hash = hashlib.md5(chunk['title'].encode()).hexdigest()
-            # Qdrant prefers UUID string or integer. We'll use a deterministic approach.
             points.append(models.PointStruct(
                 id=content_hash[:32], # Use hex string as ID
                 vector=vector,
@@ -57,6 +56,29 @@ class VectorDBClient:
                 query_vector=query_vector,
                 limit=limit
             )
+
+    def fetch_all_chunks(self):
+        """Kéo toàn bộ dữ liệu từ Qdrant về để huấn luyện BM25 (Hybrid Search Warm-up)"""
+        all_chunks = []
+        offset = None
+        while True:
+            response = self.client.scroll(
+                collection_name=self.collection_name,
+                limit=100,
+                with_payload=True,
+                with_vectors=False,
+                offset=offset
+            )
+            points, offset = response
+            for p in points:
+                all_chunks.append({
+                    "title": p.payload.get("title"),
+                    "content": p.payload.get("content"),
+                    "metadata": {k: v for k, v in p.payload.items() if k not in ["title", "content"]}
+                })
+            if offset is None:
+                break
+        return all_chunks
 
 if __name__ == "__main__":
     vdb = VectorDBClient()

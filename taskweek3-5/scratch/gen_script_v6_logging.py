@@ -1,4 +1,7 @@
+import os
 
+# TRANSFORMERS ENGINE (V6) WITH FILE LOGGING - ULTRA STABLE
+code_content = r"""
 import subprocess
 import sys
 import os
@@ -110,3 +113,9 @@ if target_file:
         log_to_file(f"\nCRITICAL ERROR: {str(e)}")
 else:
     log_to_file("ERROR: No PDF file found!")
+"""
+
+with open(r'C:\SINHVIEN\DATN\DATN_2251162143_Progress_Note\taskweek3-5\kaggle_chandra_engine\kaggle_chandra_runner.py', 'w', encoding='utf-8') as f:
+    f.write(code_content)
+
+print("Stable Transformers script with File Logging generated.")

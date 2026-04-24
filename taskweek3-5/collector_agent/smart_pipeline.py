@@ -57,16 +57,16 @@ TVPL_PASS = os.getenv("THU_VIEN_PHAP_LUAT_PASS", "dhtl123456")
 # ── TVPL document URLs liên quan đến TLU ─────────────────────────────────────
 # Đây là danh sách URL trang của các văn bản pháp luật liên quan đến giáo dục ĐH
 TVPL_DOCUMENT_URLS = [
-    # Luật Giáo dục đại học
+    # Luật Giáo dục đại học 2012
     "https://thuvienphapluat.vn/van-ban/Giao-duc/Luat-giao-duc-dai-hoc-2012-141398.aspx",
     # Luật sửa đổi GDĐH 2018
     "https://thuvienphapluat.vn/van-ban/Giao-duc/Luat-sua-doi-Luat-Giao-duc-dai-hoc-2018-371747.aspx",
     # Quy chế đào tạo đại học (Thông tư 08)
     "https://thuvienphapluat.vn/van-ban/Giao-duc/Thong-tu-08-2021-TT-BGDDT-quy-che-dao-tao-trinh-do-dai-hoc-468368.aspx",
-    # Nghị định 99 học phí
-    "https://thuvienphapluat.vn/van-ban/Giao-duc/Nghi-dinh-99-2019-ND-CP-huong-dan-Luat-Giao-duc-dai-hoc-422286.aspx",
-    # Thông tư 10 học bổng
-    "https://thuvienphapluat.vn/van-ban/Giao-duc/Thong-tu-10-2016-TT-BGDDT-quy-che-cong-tac-sinh-vien-co-so-giao-duc-dai-hoc-he-chinh-quy-312447.aspx",
+    # Nghị định 99 học phí (URL Updated)
+    "https://thuvienphapluat.vn/van-ban/Giao-duc/Nghi-dinh-99-2019-ND-CP-huong-dan-Luat-Giao-duc-dai-hoc-432906.aspx",
+    # Thông tư 10 học bổng (URL Updated)
+    "https://thuvienphapluat.vn/van-ban/Giao-duc/Thong-tu-10-2016-TT-BGDDT-quy-che-cong-tac-sinh-vien-co-so-giao-duc-dai-hoc-he-chinh-quy-308119.aspx",
     # Luật Viên chức
     "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-Vien-chuc-2010-107730.aspx",
     # Luật Giáo dục 2019
@@ -260,17 +260,34 @@ def harvest_tvpl():
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(accept_downloads=True)
-        page = context.new_page()
+        
+        def get_fresh_page():
+            context = browser.new_context(
+                accept_downloads=True,
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                viewport={'width': 1920, 'height': 1080}
+            )
+            return context, context.new_page()
+
+        context, page = get_fresh_page()
         
         # ── Đăng nhập ──────────────────────────────────────────────────────────
         log.info("TVPL: Logging in...")
         try:
-            page.goto("https://thuvienphapluat.vn/page/login.aspx", timeout=30000)
+            page.goto("https://thuvienphapluat.vn/page/login.aspx", timeout=60000)
+            page.wait_for_selector("#UserName", timeout=30000)
             page.fill("#UserName", TVPL_USER)
             page.fill("#Password", TVPL_PASS)
             page.click("#Button1")
-            page.wait_for_load_state("networkidle", timeout=20000)
+            
+            # Xử lý overlap session hoặc popup cảnh báo
+            page.wait_for_timeout(5000)
+            agree_btn = page.locator("input[value*='Đồng ý'], button:has-text('Đồng ý'), #btnDongY, .btnAgree").first
+            if agree_btn.is_visible():
+                log.info("TVPL: Overlap detected. Confirming session...")
+                agree_btn.click()
+                page.wait_for_timeout(3000)
+            
             log.info("TVPL: Login successful")
         except Exception as e:
             log.error(f"TVPL Login failed: {e}")
@@ -281,38 +298,78 @@ def harvest_tvpl():
         for doc_url in TVPL_DOCUMENT_URLS:
             try:
                 log.info(f"\nTVPL: Processing → {doc_url}")
-                page.goto(doc_url, timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=20000)
+                page.goto(doc_url, timeout=60000)
+                # Chờ Cloudflare hoặc trang load hẳn
+                page.wait_for_timeout(10000) 
                 
-                # Lấy tiêu đề văn bản
-                title_el = page.query_selector("h1.title-vb, h1.document-title, .doc-title h1")
-                if title_el:
-                    doc_title = title_el.inner_text().strip()
-                else:
-                    doc_title = page.title().strip()
+                # Lấy tiêu đề văn bản chuẩn từ URL nếu tiêu đề trang bị rác
+                doc_title = ""
+                title_h1 = page.locator("h1.title-vb, h1").first
+                if title_h1.is_visible(timeout=5000):
+                    doc_title = title_h1.inner_text().strip()
                 
-                log.info(f"  Title: {doc_title[:80]}")
+                # Kiểm tra xem có bị trúng "Bẫy" không (Title khác hẳn nội dung URL)
+                page_title_low = page.title().lower()
+                if "just a moment" in page_title_low or "thuvienphapluat" in doc_title.lower() or not doc_title:
+                    log.warning(f"  ⚠️ Detection triggered or Page not loaded. Retrying with fresh context...")
+                    context.close()
+                    context, page = get_fresh_page()
+                    # Re-login might be needed, but let's try direct access first
+                    page.goto(doc_url, timeout=60000)
+                    page.wait_for_timeout(15000)
+                    title_h1 = page.locator("h1.title-vb, h1").first
+                    if title_h1.is_visible(timeout=5000):
+                        doc_title = title_h1.inner_text().strip()
+
+                if not doc_title or "thuvienphapluat" in doc_title.lower():
+                    # Fallback cuối cùng: Lấy từ slug của URL
+                    doc_title = doc_url.split('/')[-1].replace('.aspx', '')
+
+                log.info(f"  Actual Title: {doc_title[:80]}")
                 
                 # ── Tìm tab "Tải về" ────────────────────────────────────────────
-                tab_download = page.query_selector("a[href*='tai-ve'], a:has-text('Tải về'), li:has-text('Tải về') a")
+                tab_selectors = [
+                    "ul.nav-tabs-vb li:has-text('Tải về')",
+                    "ul.nav-tabs-vb li:has-text('Văn bản gốc/PDF')",
+                    "a:has-text('Tải về')",
+                    "a:has-text('Văn bản gốc/PDF')"
+                ]
+                
+                tab_download = None
+                for selector in tab_selectors:
+                    loc = page.locator(selector).first
+                    if loc.is_visible(timeout=5000):
+                        tab_download = loc
+                        break
+                
                 if tab_download:
+                    log.info(f"  Opening Download Tab...")
                     tab_download.click()
-                    page.wait_for_timeout(2000)
+                    page.wait_for_timeout(4000)
                 
                 downloaded_file = None
-                file_type_label = "pdf"  # default
+                file_type_label = "doc"
+                online_text = ""
                 
-                # ── Thử tải DOC (Vietnamese text version) ───────────────────────
+                # ── BƯỚC 1: Lấy nội dung text online trước (để đảm bảo có dữ liệu) ─────
                 try:
-                    doc_link = page.query_selector(
+                    content_el = page.locator("#ctl00_Content_ThongTinVB_divNoiDung, .content-vb").first
+                    if content_el.is_visible(timeout=10000):
+                        online_text = content_el.inner_text().strip()
+                        log.info(f"  ✅ Online text captured ({len(online_text)} chars)")
+                except:
+                    log.warning("  Could not capture online text.")
+
+                # ── BƯỚC 2: Tải file DOC theo yêu cầu USER ──────────────────────────
+                try:
+                    doc_link = page.locator(
                         "#ctl00_Content_ThongTinVB_vietnameseHyperLink, "
                         "a[id*='vietnameseHyperLink'], "
                         "a:has-text('Tải Văn bản tiếng Việt'), "
                         "a:has-text('Tải văn bản (.doc)')"
-                    )
-                    if doc_link and doc_link.is_visible():
-                        href = doc_link.get_attribute("href")
-                        log.info(f"  → DOC link found: {href}")
+                    ).first
+                    if doc_link.is_visible(timeout=5000):
+                        log.info(f"  → DOC link found, downloading...")
                         with page.expect_download(timeout=60000) as dl:
                             doc_link.click()
                         download = dl.value
@@ -320,39 +377,28 @@ def harvest_tvpl():
                         out_path = out_dir / safe_filename(doc_title, ext)
                         download.save_as(str(out_path))
                         downloaded_file = out_path
-                        file_type_label = "docx"
                         log.info(f"  ✅ DOC downloaded: {out_path.name} ({out_path.stat().st_size} bytes)")
                 except Exception as e:
-                    log.warning(f"  DOC download failed, trying PDF: {e}")
+                    log.warning(f"  DOC download failed: {e}")
                 
-                # ── Fallback: Tải PDF ────────────────────────────────────────────
-                if not downloaded_file:
-                    try:
-                        pdf_link = page.query_selector(
-                            "#ctl00_Content_ThongTinVB_pdfHyperLink, "
-                            "a[id*='pdfHyperLink'], "
-                            "a:has-text('Tải Văn bản gốc'), "
-                            "a:has-text('Tải file gốc (.pdf)')"
-                        )
-                        if pdf_link and pdf_link.is_visible():
-                            with page.expect_download(timeout=60000) as dl:
-                                pdf_link.click()
-                            download = dl.value
-                            out_path = out_dir / safe_filename(doc_title, ".pdf")
-                            download.save_as(str(out_path))
-                            downloaded_file = out_path
-                            file_type_label = "pdf"
-                            log.info(f"  ✅ PDF downloaded: {out_path.name} ({out_path.stat().st_size} bytes)")
-                    except Exception as e:
-                        log.warning(f"  PDF download also failed: {e}")
-                
-                # ── Trích xuất nội dung ──────────────────────────────────────────
-                if downloaded_file:
+                # ── BƯỚC 3: Xử lý nội dung ──────────────────────────────────────────
+                chunks = []
+                if downloaded_file and downloaded_file.suffix.lower() == ".docx":
+                    # Chỉ dùng python-docx cho .docx
                     chunks = process_file(downloaded_file, doc_title, "tvpl")
+                
+                # Nếu không có chunks từ file (vì là .doc cũ hoặc lỗi), dùng online_text
+                if not chunks and online_text:
+                    log.info(f"  → Falling back to online text for chunking...")
+                    chunks = chunk_by_article(online_text, doc_title, "web_scrape")
+                    if chunks:
+                        save_chunks(chunks, "tvpl", doc_title)
+                
+                if chunks:
                     all_chunks.extend(chunks)
                     log.info(f"  → Produced {len(chunks)} chunks")
                 else:
-                    log.error(f"  ✗ Could not download any version of: {doc_title}")
+                    log.error(f"  ✗ Could not extract content for: {doc_title}")
                 
                 time.sleep(2)  # Tránh bị rate limit
                 

@@ -1,0 +1,1 @@
+{"id": "nguynxunti/chandra-ocr-engine", "title": "Chandra OCR Engine", "code_file": "kaggle_chandra_runner.py", "language": "python", "kernel_type": "script", "is_private": "true", "enable_gpu": "true", "enable_internet": "true", "dataset_sources": ["nguynxunti/chandra-ocr-input"]}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
+const API_BASE_URL = 'http://localhost:8003'; 
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -10,33 +10,49 @@ const apiClient = axios.create({
 });
 
 export const searchService = {
-  /**
-   * Truy vấn tìm kiếm ngữ nghĩa từ Vector DB
-   * @param {string} query - Câu hỏi sinh viên
-   * @param {number} topK - Số kết quả tối đa
-   */
   async search(query, topK = 5) {
     try {
-      const response = await apiClient.post('/search', {
-        query: query,
-        top_k: topK,
-      });
-      return response.data;
+      const response = await apiClient.post('/search', { query, top_k: topK });
+      return { results: response.data };
     } catch (error) {
-      console.error('Search API Error:', error);
+      console.error('Search Error:', error);
       throw error;
     }
   },
 
-  /**
-   * Kiểm tra trạng thái hệ thống
-   */
+  async refreshIndex() {
+    const response = await apiClient.post('/refresh');
+    return response.data;
+  },
+
   async checkHealth() {
     try {
-      const response = await apiClient.get('/health');
-      return response.data;
+      const response = await apiClient.get('/');
+      return { status: 'ok', data: response.data };
     } catch (error) {
-      return { status: 'offline', error };
+      return { status: 'offline' };
     }
+  }
+};
+
+export const adminService = {
+  async listFiles() {
+    const response = await apiClient.get('/admin/files');
+    return response.data;
+  },
+
+  async triggerOCR(filePath, mode = 'cloud') {
+    const response = await apiClient.post('/admin/ocr', { path: filePath, mode });
+    return response.data;
+  },
+
+  async getOCRContent(fileName) {
+    const response = await apiClient.get(`/admin/ocr-content/${fileName}`);
+    return response.data;
+  },
+
+  async triggerEmbed(fileName) {
+    const response = await apiClient.post('/admin/embed', { filename: fileName });
+    return response.data;
   }
 };

@@ -1,17 +1,15 @@
+import os
 
+# TRANSFORMERS ENGINE (V6) - ULTRA STABLE ON T4 GPU
+code_content = r"""
 import subprocess
 import sys
 import os
 
-def log_to_file(msg):
-    print(msg)
-    with open("execution_log.txt", "a", encoding="utf-8") as f:
-        f.write(msg + "\n")
-
 def install_deps():
-    log_to_file("Step 1: Installing dependencies (Transformers, Qwen-VL)... Please wait...")
+    print("Step 1: Installing dependencies (Transformers, Qwen-VL)... Please wait...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "pymupdf", "transformers>=4.45.0", "accelerate", "torch", "qwen-vl-utils", "beautifulsoup4"])
-    log_to_file("Success: Dependencies installed!")
+    print("Success: Dependencies installed!")
 
 try:
     from transformers import Qwen2VLForConditionalGeneration, AutoProcessor
@@ -28,12 +26,12 @@ from bs4 import BeautifulSoup
 
 class ChandraMaster:
     def __init__(self, model_id="datalab-to/chandra-ocr-2"):
-        log_to_file(f"Step 2: Initializing LLM {model_id} via Transformers (Stable Mode)...")
+        print(f"Step 2: Initializing LLM {model_id} via Transformers (Stable Mode)...")
+        # Load in 4-bit or float16 to save memory
         self.model = Qwen2VLForConditionalGeneration.from_pretrained(
             model_id, torch_dtype="auto", device_map="auto", trust_remote_code=True
         )
         self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
-        log_to_file("Success: Model loaded into GPU memory!")
 
     def process_large_file(self, pdf_path):
         doc = fitz.open(pdf_path)
@@ -41,11 +39,13 @@ class ChandraMaster:
         final_md = f"# OCR RESULTS: {os.path.basename(pdf_path)}\n\n"
         
         for i in range(total_pages):
-            log_to_file(f"\n[PROCESS] Scanning page {i+1}/{total_pages}...")
+            print(f"\n[PROCESS] Scanning page {i+1}/{total_pages}...")
             page = doc[i]
             pix = page.get_pixmap(dpi=300)
             img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             
+            # Use whole page for better layout, or tiles if needed
+            # For simplicity and stability, we use whole page first
             messages = [
                 {
                     "role": "user",
@@ -82,7 +82,7 @@ class ChandraMaster:
                 if label == "Section-Header": final_md += f"\n### {content}\n"
                 elif label == "Table": final_md += f"\n{str(b.table)}\n"
                 else: final_md += f"{content} "
-            log_to_file(f"Done page {i+1}!")
+            print(f"Done page {i+1}.")
             
         return final_md
 
@@ -99,14 +99,20 @@ for root, _, files in os.walk(INPUT_DIR):
     if target_file: break
 
 if target_file:
-    log_to_file(f"Starting OCR: {os.path.basename(target_file)}")
+    print(f"Starting OCR: {os.path.basename(target_file)}")
     try:
         master = ChandraMaster()
         md_output = master.process_large_file(target_file)
         with open("final_high_fidelity_ocr.md", "w", encoding="utf-8") as f:
             f.write(md_output)
-        log_to_file("\nALL DONE! Results saved at 'final_high_fidelity_ocr.md'.")
+        print("\nALL DONE! Results saved at 'final_high_fidelity_ocr.md'.")
     except Exception as e:
-        log_to_file(f"\nCRITICAL ERROR: {str(e)}")
+        print(f"\nCRITICAL ERROR: {str(e)}")
 else:
-    log_to_file("ERROR: No PDF file found!")
+    print("ERROR: No PDF file found!")
+"""
+
+with open(r'C:\SINHVIEN\DATN\DATN_2251162143_Progress_Note\taskweek3-5\kaggle_chandra_engine\kaggle_chandra_runner.py', 'w', encoding='utf-8') as f:
+    f.write(code_content)
+
+print("Transformers-based stable script generated successfully.")
