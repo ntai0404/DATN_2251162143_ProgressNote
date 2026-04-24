@@ -112,7 +112,8 @@ class TextExtractor:
 class Chunker:
     def chunk(self, text: str, source: str, url: str) -> List[Dict]:
         text = re.sub(r"\n{3,}", "\n\n", text).strip()
-        parts = re.split(r"(?=\n\s*(?:Điều|Chương|Phần|Ngày)\s+\d+[\.\:\s])", text)
+        # Enhanced regex to handle Markdown bolding (**Điều**) and optional whitespace
+        parts = re.split(r"(?=\n\s*(?:\*\*|)\s*(?:Điều|Chương|Phần|Mục|Ngày)\s+\d+[\.\:\s])", text)
         chunks = []
         if len(parts) > 2:
             for p in parts:
