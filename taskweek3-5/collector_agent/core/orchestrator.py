@@ -26,6 +26,7 @@ from qdrant_client.http import models
 from ..services.ocr_service import ChandraOCRService
 from ..services.vector_service import VectorService
 from ..services.tvpl_harvester import TVPLHarvester
+from ..services.tlu_harvester import TLUHarvester
 from ..processors.content_processor import ContentProcessor
 
 log = logging.getLogger("Collector.Orchestrator")
@@ -34,6 +35,7 @@ log = logging.getLogger("Collector.Orchestrator")
 _BASE_DIR = Path(__file__).resolve().parents[2]   # taskweek3-5/
 TVPL_OUTPUT_DIR = _BASE_DIR / "data_raw" / "tvpl"
 TVPL_STATE_FILE = _BASE_DIR / "data_raw" / "tvpl_spider_state.json"
+TLU_OUTPUT_DIR  = _BASE_DIR / "data_raw" / "hanhchinh"
 
 
 class CollectorOrchestrator:
@@ -76,6 +78,30 @@ class CollectorOrchestrator:
 
         log.info(f"TVPL Pipeline done. Total chunks upserted: {total_chunks}")
         return total_chunks
+
+    def run_tlu_pipeline(self, max_pages: int = 1, headless: bool = True) -> list[Path]:
+        """
+        Thu thập các file văn bản (PDF/DOC) từ Portal Hành chính TLU.
+        Dữ liệu thô sẽ được lưu vào data_raw/hanhchinh.
+
+        Args:
+            max_pages: Số trang tối đa cần quét trên mỗi Tab.
+            headless: Chế độ chạy trình duyệt.
+
+        Returns:
+            Danh sách đường dẫn các file đã tải về.
+        """
+        log.info(f"Starting TLU Administrative Pipeline (max_pages={max_pages}, headless={headless})")
+        TLU_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+        harvester = TLUHarvester(
+            output_dir=TLU_OUTPUT_DIR,
+            headless=headless
+        )
+        downloaded_files = harvester.run(max_pages=max_pages)
+        
+        log.info(f"TLU Pipeline complete. Downloaded {len(downloaded_files)} files to {TLU_OUTPUT_DIR.name}")
+        return downloaded_files
 
     def run_ingestion_pipeline(self, md_file_path: str) -> int:
         """
