@@ -1,6 +1,0 @@
-Step 1: Installing dependencies (Transformers, Qwen-VL)... Please wait...
-Success: Dependencies installed!
-Starting OCR: input.pdf
-Step 2: Initializing LLM datalab-to/chandra-ocr-2 via Transformers (Stable Mode)...
-
-CRITICAL ERROR: You set `ignore_mismatched_sizes` to `False`, thus raising an error. For details look at the above report!

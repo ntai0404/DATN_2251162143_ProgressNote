@@ -21,12 +21,13 @@ Hệ thống được xây dựng theo kiến trúc Microservices hướng sự 
 - **Chức năng:** Tự động hóa việc thu thập dữ liệu từ Hanhchinh.tlu.edu.vn và Thuvienphapluat.vn.
 - **Thư viện:** Playwright (sync), BeautifulSoup4.
 
-### 4. OCR Pipeline (Chandra Integration)
-- **Core:** `pdf_processor.py`.
-- **Cơ chế:** 
-    - Tự động nhận diện PDF dạng ảnh (Scanned PDF).
-    - **Kaggle Bridge (`chandra_bot.py`):** Khi gặp file quét, hệ thống gửi yêu cầu qua Kaggle API để chạy mô hình Transformer OCR (Chandra) giúp phục hồi Layout và ký tự tiếng Việt với độ chính xác ~100%.
-    - Kết quả trả về dưới dạng Markdown sạch để chuẩn bị cho bước Chunking.
+### 4. OCR Pipeline (Chandra & High-Fidelity Extraction)
+- **Core Orchestrator:** `pdf_processor.py`.
+- **Cơ chế hoạt động:** 
+    - **Cloud High-Fidelity (Kaggle Bridge):** Sử dụng `chandra_bot.py` để gửi tác vụ lên Kaggle GPU T4. 
+    - **Runner Tối ưu:** `kaggle_chandra_runner.py` sử dụng logic official từ Chandra 2, tự động snapping ảnh về bội số của 28 và giới hạn pixel (~1.2M) để tránh lỗi bộ nhớ VRAM.
+    - **Safe-Naming:** Tự động khử dấu tiếng Việt và chuẩn hóa tên file để tránh lỗi encoding trong môi trường Linux/Kaggle.
+    - **Fallback Local (EasyOCR):** Tự động kích hoạt khi Cloud OCR gặp sự cố, đảm bảo dữ liệu luôn được trích xuất.
 
 ### 5. Vector Database & Message Queue
 - **Qdrant (Port 6335):** Lưu trữ vector tri thức.
@@ -52,5 +53,6 @@ Hệ thống không chia nhỏ văn bản theo độ dài cố định (fixed si
 ### 3. Cơ chế Hybrid Search (Weighted Search)
 - **Case xử lý:** Khi User nhập "Điều 3", Vector search có thể tìm thấy nhiều Điều tương tự, nhưng BM25 sẽ "kéo" Điều 3 chính xác lên Top 1 nhờ trùng khớp từ khóa tuyệt đối.
 
-### 4. Dự phòng OCR (Local Fallback)
-- **Case xử lý:** Nếu kết nối Kaggle Bridge gặp sự cố, hệ thống tự động sử dụng EasyOCR (local) như một phương án dự phòng để đảm bảo tiến trình không bị gián đoạn hoàn toàn.
+### 4. Dự phòng OCR (Hybrid Pipeline)
+- **Case xử lý:** Hệ thống ưu tiên Chandra OCR để lấy Layout (Table, Math, Headers). Nếu Kaggle API phản hồi chậm (>10 phút) hoặc lỗi, EasyOCR local sẽ tiếp quản.
+- **Tối ưu VRAM:** Runner trên Kaggle được cấu hình đặc biệt để xử lý các file lớn (>15 trang) bằng cách dọn dẹp bộ nhớ đệm GPU sau mỗi trang.
